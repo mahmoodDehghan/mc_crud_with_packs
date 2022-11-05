@@ -1,4 +1,4 @@
-name: flutter_app_template
+name: mc_crud
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -34,6 +34,14 @@ dependencies:
   flutter_gherkin: ^3.0.0-rc.17  
   flutter_localizations: 
     sdk: flutter
+  go_router: ^5.1.1  
+
+  customer_manager:
+    path: './customer_manager'
+    
+  birth_date_picker:
+    path: './customer_manager/birth_date_picker'
+    
 
   
 

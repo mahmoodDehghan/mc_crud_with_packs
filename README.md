@@ -1,21 +1,50 @@
-# flutter_app_template
+# CRUD Code Test
 
-A new Flutter project template with bdd initialization and integration(acceptance) test. 
+Please read each note very carefully!
+Feel free to add/change project structure to a clean architecture to your view.
+and if you are not able to work on FrontEnd project, you can add a Swagger UI
+in a new Front project.
 
-## Getting Started
+Create a simple CRUD application with that implements the below model:
 
-first check pubspec packages version and update them.
-to check the bdd behavior run following commands in seprate terminals:
+```
+Customer {
+	Firstname
+	Lastname
+	DateOfBirth
+	PhoneNumber
+	Email
+	BankAccountNumber
+}
+```
 
-chromedriver --port=4444
+## Practices and patterns (Must)
 
-flutter drive --driver=test_driver/integration_test_driver.dart --target=acceptance_test/gherkin_suite_test.dart -d chrome
+- [TDD](https://en.wikipedia.org/wiki/Test-driven_development)
+- [DDD](https://en.wikipedia.org/wiki/Domain-driven_design)
+- [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development): [Acceptance Test](https://en.wikipedia.org/wiki/Acceptance_testing)
+- Clean git commits that shows your work progress.
 
-after change in future and suite test with these cammand update generated class
+## Clean Architecture (Must)
 
-flutter pub run build_runner clean
+<img src="./clean_architecture.png" max-width="250px" max-height="250px" />
 
-flutter pub run build_runner build
+### Validations (Must)
 
-or use build with delete config flag or watch.
+- During Create; validate the phone number to be a valid *mobile* number only (You can use [Google LibPhoneNumber](https://github.com/google/libphonenumber) to validate number at the backend).
 
+- A Valid email and a valid account number must be checked before submitting the form.
+
+- Customers must be unique in database: By `Firstname`, `Lastname` and `DateOfBirth`.
+
+- Email must be unique in the database.
+
+### Storage (Must)
+
+- Use database of choise to store data.
+
+- Store the phone number in a database with minimized space storage (choose `varchar`/`string`, or `Uint64` whichever store less space).
+
+### Submit your result
+
+Please clone this repository in a new github repository in private mode and share with ID: `mason-chase` in private mode on github.com

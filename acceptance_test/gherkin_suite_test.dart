@@ -3,9 +3,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 
 // The application under test.
-import 'package:flutter_app_template/main.dart' as app;
+import 'package:mc_crud/main.dart' as app;
 
-import 'steps/counter_when_step.dart';
+import 'hooks/prepare_db.dart';
+import 'steps/choose_birth_date.dart';
+import 'steps/customer_exist.dart';
+import 'steps/message_confirm.dart';
+// import 'steps/no_customer_exist.dart';
+// import 'steps/scroll_top.dart';
+import 'steps/show_birth_date.dart';
+import 'steps/specific_date_pick.dart';
+import 'steps/tap_widget.dart';
+import 'steps/widget_presents.dart';
 
 part 'gherkin_suite_test.g.dart';
 
@@ -15,10 +24,23 @@ part 'gherkin_suite_test.g.dart';
 void main() {
   executeTestSuite(
     configuration: FlutterTestConfiguration(
-      stepDefinitions: [tapButtonNTimesStep()],
-      waitImplicitlyAfterAction: true,
+      stepDefinitions: [
+        pickRightDate(),
+        isPresent(),
+        pickSpecificDate(),
+        customerExist(),
+        showBirthDate(),
+        tapWidget(),
+        // scrollTop(),
+        messageConfirm(),
+      ],
       semanticsEnabled: false,
+      hooks: [
+        PrepareDB(),
+      ],
+      waitImplicitlyAfterAction: true,
       defaultTimeout: const Duration(seconds: 40),
+      // stopAfterTestFailed: true,
       reporters: [
         StdoutReporter(MessageLevel.error)
           ..setWriteLineFn(print)

@@ -1,0 +1,6 @@
+{
+  "moduleTitle": "customer_manager",
+  "@moduleTitle": {
+    "description": "The title of the module and example title"
+  }
+}
