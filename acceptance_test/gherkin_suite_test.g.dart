@@ -32,774 +32,6 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
   void testFeature0() {
     runFeature(
-      name: 'Show A CUSTOMER List:',
-      tags: <String>[],
-      run: () {
-        runScenario(
-          name: 'read and show all customers from db',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I expect the "Customer_List" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN there is customer in db',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'THEN I expect the text "1 : Mahmood Dehghan" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-          onBefore: () async => onBeforeRunFeature(
-            name: 'Show A CUSTOMER List',
-            path:
-                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-            description: null,
-            tags: <String>[],
-          ),
-        );
-
-        runScenario(
-          name: 'read and show all customers from db without any data',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I expect the "Customer_List" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "customer_delete" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "customer_delete" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "customer_delete_yes" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_delete_yes" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'THEN I expect the text "1 : Mahmood Dehghan" to be absent',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'AND I expect the text "There is no customer!" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-        );
-
-        runScenario(
-          name: 'update all customers based on added new customer',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I expect the "Customer_List" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "plus" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "plus" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "email" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "email" field with "ali@gmail.com"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "firstName" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "firstName" field with "ALI"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "lastName" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "lastName" field with "KHOSH"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "phone_number" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'AND I fill the "phone_number" field with "+989151346447"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "bank_account" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "bank_account" field with "123453699"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "changeDate" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I choose birthdate from picker',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_save" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the back button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'THEN I wait until the "Customer_List" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I expect the text "2 : ALI KHOSH" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-        );
-
-        runScenario(
-          name: 'update customer list based on customer update action',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I wait until the "customer_edit" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_edit" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "firstName" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "firstName" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "firstName" field with "sam"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "lastName" field',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I fill the "lastName" field with "sami"',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_save" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the back button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'THEN I wait until the "Customer_List" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I expect the text "1 : sam sami" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-          onAfter: () async => onAfterRunFeature(
-            name: 'Show A CUSTOMER List',
-            path:
-                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
-            description: null,
-            tags: <String>[],
-          ),
-        );
-      },
-    );
-  }
-
-  void testFeature1() {
-    runFeature(
-      name: 'Remove A CUSTOMER:',
-      tags: <String>[],
-      run: () {
-        runScenario(
-          name: 'confirm dialog for remove a customer from list and db',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I wait until the "customer_delete" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "customer_delete" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'THEN I wait until the "confirm" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-          onBefore: () async => onBeforeRunFeature(
-            name: 'Remove A CUSTOMER',
-            path:
-                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
-            description: null,
-            tags: <String>[],
-          ),
-        );
-
-        runScenario(
-          name: 'confirm remove a customer from list and db by tapping yes',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I wait until the "customer_delete" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "customer_delete" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "customer_delete_yes" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_delete_yes" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'THEN I expect the text "1 : Mahmood Dehghan" to be absent',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-        );
-
-        runScenario(
-          name: 'unconfirm remove a customer from list and db by tapping no',
-          description: null,
-          path:
-              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
-          tags: <String>[],
-          steps: [
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'GIVEN I wait until the "customer_delete" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'WHEN I tap the "customer_delete" icon',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I wait until the "customer_delete_no" is present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'AND I tap the "customer_delete_no" button',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name: 'THEN I wait until the "confirm" is absent',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-            (
-              TestDependencies dependencies,
-              bool skip,
-            ) async {
-              return await runStep(
-                name:
-                    'AND I expect the text "1 : Mahmood Dehghan" to be present',
-                multiLineStrings: <String>[],
-                table: null,
-                dependencies: dependencies,
-                skip: skip,
-              );
-            },
-          ],
-          onAfter: () async => onAfterRunFeature(
-            name: 'Remove A CUSTOMER',
-            path:
-                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
-            description: null,
-            tags: <String>[],
-          ),
-        );
-      },
-    );
-  }
-
-  void testFeature2() {
-    runFeature(
       name: 'ADD A CUSTOMER:',
       tags: <String>[],
       run: () {
@@ -2185,7 +1417,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             ) async {
               return await runStep(
                 name:
-                    'AND I expect the message "Invalid phone number" to be shown',
+                    'AND I expect the message "Invalid phone number!" to be shown',
                 multiLineStrings: <String>[],
                 table: null,
                 dependencies: dependencies,
@@ -2205,7 +1437,553 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     );
   }
 
-  void testFeature3() {
+  void testFeature1() {
+    runFeature(
+      name: 'Show A CUSTOMER List:',
+      tags: <String>[],
+      run: () {
+        runScenario(
+          name: 'read and show all customers from db',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I expect the "Customer_List" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN there is customer in db',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'THEN I expect the text "1 : Mahmood Dehghan" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+          onBefore: () async => onBeforeRunFeature(
+            name: 'Show A CUSTOMER List',
+            path:
+                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+            description: null,
+            tags: <String>[],
+          ),
+        );
+
+        runScenario(
+          name: 'read and show all customers from db without any data',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I expect the "Customer_List" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "customer_delete" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "customer_delete" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "customer_delete_yes" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_delete_yes" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'THEN I expect the text "1 : Mahmood Dehghan" to be absent',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'AND I expect the text "There is no customer!" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+        );
+
+        runScenario(
+          name: 'update all customers based on added new customer',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I expect the "Customer_List" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "plus" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "plus" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "email" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "email" field with "ali@gmail.com"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "firstName" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "firstName" field with "ALI"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "lastName" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "lastName" field with "KHOSH"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "phone_number" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'AND I fill the "phone_number" field with "+989151346447"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "bank_account" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "bank_account" field with "123453699"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "changeDate" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I choose birthdate from picker',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_save" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the back button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'THEN I wait until the "Customer_List" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I expect the text "2 : ALI KHOSH" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+        );
+
+        runScenario(
+          name: 'update customer list based on customer update action',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I wait until the "customer_edit" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_edit" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "firstName" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "firstName" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "firstName" field with "sam"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "lastName" field',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I fill the "lastName" field with "sami"',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_save" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the back button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'THEN I wait until the "Customer_List" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I expect the text "1 : sam sami" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+          onAfter: () async => onAfterRunFeature(
+            name: 'Show A CUSTOMER List',
+            path:
+                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer_list.feature',
+            description: null,
+            tags: <String>[],
+          ),
+        );
+      },
+    );
+  }
+
+  void testFeature2() {
     runFeature(
       name: 'Show A CUSTOMER List:',
       tags: <String>[],
@@ -2325,6 +2103,228 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             name: 'Show A CUSTOMER List',
             path:
                 'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\show_customer.feature',
+            description: null,
+            tags: <String>[],
+          ),
+        );
+      },
+    );
+  }
+
+  void testFeature3() {
+    runFeature(
+      name: 'Remove A CUSTOMER:',
+      tags: <String>[],
+      run: () {
+        runScenario(
+          name: 'confirm dialog for remove a customer from list and db',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I wait until the "customer_delete" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "customer_delete" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'THEN I wait until the "confirm" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+          onBefore: () async => onBeforeRunFeature(
+            name: 'Remove A CUSTOMER',
+            path:
+                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
+            description: null,
+            tags: <String>[],
+          ),
+        );
+
+        runScenario(
+          name: 'confirm remove a customer from list and db by tapping yes',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I wait until the "customer_delete" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "customer_delete" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "customer_delete_yes" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_delete_yes" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'THEN I expect the text "1 : Mahmood Dehghan" to be absent',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+        );
+
+        runScenario(
+          name: 'unconfirm remove a customer from list and db by tapping no',
+          description: null,
+          path:
+              'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
+          tags: <String>[],
+          steps: [
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'GIVEN I wait until the "customer_delete" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'WHEN I tap the "customer_delete" icon',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I wait until the "customer_delete_no" is present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'AND I tap the "customer_delete_no" button',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name: 'THEN I wait until the "confirm" is absent',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+            (
+              TestDependencies dependencies,
+              bool skip,
+            ) async {
+              return await runStep(
+                name:
+                    'AND I expect the text "1 : Mahmood Dehghan" to be present',
+                multiLineStrings: <String>[],
+                table: null,
+                dependencies: dependencies,
+                skip: skip,
+              );
+            },
+          ],
+          onAfter: () async => onAfterRunFeature(
+            name: 'Remove A CUSTOMER',
+            path:
+                'C:\\chakavack\\mc_crud_with_packs\\.\\acceptance_test\\features\\remove_customer.feature',
             description: null,
             tags: <String>[],
           ),

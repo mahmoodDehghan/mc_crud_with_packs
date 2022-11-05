@@ -122,4 +122,4 @@ Feature: ADD A CUSTOMER
     AND I long press the "email" field
     AND I expect the message "Please ensure the email entered is valid!" to be shown
     AND I long press the "phone_number" field
-    AND I expect the message "Invalid phone number" to be shown    
+    AND I expect the message "Invalid phone number!" to be shown    
