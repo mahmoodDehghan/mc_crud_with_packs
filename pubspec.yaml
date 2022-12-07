@@ -34,7 +34,8 @@ dependencies:
   flutter_gherkin: ^3.0.0-rc.17  
   flutter_localizations: 
     sdk: flutter
-  go_router: ^5.1.1  
+  go_router: ^5.1.1
+  iban: ^1.0.1  
 
   customer_manager:
     path: './customer_manager'

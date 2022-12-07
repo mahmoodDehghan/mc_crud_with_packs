@@ -30,10 +30,13 @@ class PhoneNumberPickerWidget extends HookWidget {
           errorText: !state.status && !state.pure
               ? state.phoneNumber.nsn.isEmpty
                   ? 'Phone number is Required!'
-                  : 'Invalid phone number'
+                  : 'Invalid mobile number'
               : null,
         ),
-        validator: PhoneValidator.valid(errorText: 'Invalid phone number!'),
+        validator: PhoneValidator.compose([
+          PhoneValidator.required(errorText: 'mobile number is required!'),
+          PhoneValidator.validMobile(errorText: 'Invalid mobile number!')
+        ]),
         // autovalidateMode: AutovalidateMode.onUserInteraction,
         onChanged: (value) => context.read<PhoneNumberBloc>().add(
               PhoneNumberChanged(
