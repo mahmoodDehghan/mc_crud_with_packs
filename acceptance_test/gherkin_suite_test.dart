@@ -7,7 +7,14 @@ import 'package:gherkin/gherkin.dart';
 import 'package:mc_crud/main.dart' as app;
 
 import 'hooks/prepare_db.dart';
+import 'steps/customer_details_loaded.dart';
+import 'steps/customers_list_loaded.dart';
+import 'steps/delete_customer.dart';
+import 'steps/empty_list.dart';
+import 'steps/get_all_customers.dart';
 import 'steps/then_customer_created.dart';
+import 'steps/update_customer.dart';
+import 'steps/when_get_customer.dart';
 import 'steps/when_submit_form_create.dart';
 // import 'steps/choose_birth_date.dart';
 // import 'steps/customer_exist.dart';
@@ -30,6 +37,13 @@ void main() {
       stepDefinitions: [
         whenSubmitFormCreate(),
         thenCustomerCreated(),
+        whenGetCustomer(),
+        whenGetAllCustomers(),
+        whenUpdateFirstCustomer(),
+        whenDeleteCustomer(),
+        thenCustomersListLoaded(),
+        thenCustomerDetailsLoaded(),
+        thenNoCustomerExist(),
         // pickRightDate(),
         // isPresent(),
         // pickSpecificDate(),

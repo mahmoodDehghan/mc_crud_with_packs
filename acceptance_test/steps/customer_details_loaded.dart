@@ -3,11 +3,10 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
 
-StepDefinitionGeneric thenCustomerCreated() {
-  return then2<int, GherkinTable, FlutterWorld>(
-    RegExp(
-        r'{int} customer with these details is created:|there is {int} customer with these details:'),
-    (count, dataTable, context) async {
+StepDefinitionGeneric thenCustomerDetailsLoaded() {
+  return then1<GherkinTable, FlutterWorld>(
+    'customer with these details loaded:',
+    (dataTable, context) async {
       final columns = dataTable.asMap();
       final firstName = columns.elementAt(0)['firstName'];
       final lastName = columns.elementAt(0)['lastName'];
@@ -29,9 +28,9 @@ StepDefinitionGeneric thenCustomerCreated() {
       );
       final rep = CustomerLocalRespositoryImpl();
       final cList = await GetAllCustomerUseCaseImpl(rep).getCustomersList();
-      final specCustomers =
-          cList.result!.where((element) => element == customer).toList();
-      context.expect(specCustomers.length, count);
+      final c = cList.result!.firstWhere((element) => element == customer);
+      final getCustomer = await GetCustomerUsecaseImpl(rep).getCustomer(c.id);
+      context.expect(getCustomer.result!, c);
     },
   );
 }
