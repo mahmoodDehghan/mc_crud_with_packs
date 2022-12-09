@@ -1,7 +1,7 @@
-import 'package:customer_manager/customer_manager.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
+import 'package:mc_crud/mc_crud.dart';
 
 StepDefinitionGeneric thenCustomerDetailsLoaded() {
   return then1<GherkinTable, FlutterWorld>(

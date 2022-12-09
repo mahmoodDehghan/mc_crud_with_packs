@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:flutter_test/flutter_test.dart';
 // ignore: depend_on_referenced_packages
@@ -64,15 +66,15 @@ void main() {
         StdoutReporter(MessageLevel.error)
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        ProgressReporter()
-          ..setWriteLineFn(print)
-          ..setWriteFn(print),
+        // ProgressReporter()
+        //   ..setWriteLineFn(print)
+        //   ..setWriteFn(print),
         TestRunSummaryReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        JsonReporter(
-          writeReport: (_, __) => Future<void>.value(),
-        ),
+        // JsonReporter(
+        //   writeReport: (_, __) => Future<void>.value(),
+        // ),
       ],
     ),
     appMainFunction: (World world) async => app.main(),

@@ -1,8 +1,8 @@
-import 'package:customer_manager/customer_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mc_crud/mc_crud.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,9 +18,8 @@ class MyApp extends StatelessWidget {
         ...CustomerManagerInit.customerRoutes,
       ]),
       title: 'Customer Crud',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
-        CustomerManagerInit.localizationDelegate, // Add this line
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

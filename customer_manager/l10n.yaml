@@ -1,6 +1,0 @@
-arb-dir: lib/src/customer/localization
-template-arb-file: customer_en.arb
-output-localization-file: customer_localizations.dart
-output-class: CustomerLocalizations
-output-dir: lib/src/localization
-synthetic-package: false
