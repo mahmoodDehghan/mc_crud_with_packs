@@ -15,7 +15,7 @@ after change in future and suite test with these cammand update generated class
 
 flutter pub run build_runner clean
 
-flutter pub run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 
 or use build with delete config flag or watch.
 
