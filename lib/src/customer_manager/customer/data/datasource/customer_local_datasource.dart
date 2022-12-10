@@ -69,9 +69,11 @@ class CustomerLocalDataSource {
         FirstNameInput.dirty(customer.person.firstName);
     LastNameInput lastNameInput = LastNameInput.dirty(customer.person.lastName);
     MobileNumberInput mobileNumberInput =
-        MobileNumberInput.dirty(customer.phoneNumber);
-    BirthDateInput birthDate =
-        BirthDateInput.dirty(customer.person.dateOfBirth);
+        MobileNumberInput.dirty('+${customer.phoneNumber.toString()}');
+    BirthDateInput birthDate = BirthDateInput.dirty(BirthDate(
+            birthDate: DateTime(customer.person.birthYear!,
+                customer.person.birthMonth!, customer.person.birthDay!))
+        .birthDateString);
     final status = Formz.validate([
       bankAccountInput,
       emailInput,
@@ -104,7 +106,7 @@ class CustomerLocalDataSource {
       if ((emailCheck.errorMessage ?? '').isNotEmpty) {
         return emailCheck;
       } else {
-        await _customerBox!.put(newCustomer.id, newCustomer);
+        await _customerBox!.put(newCustomer.id, newCustomer.toLower());
         final res = GeneralResult.successResult<CustomerDTO>(newCustomer);
         return res;
       }

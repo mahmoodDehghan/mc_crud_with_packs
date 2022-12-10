@@ -7,7 +7,9 @@ void main() {
       final res = PersonMapper().map(
         PersonDTO(
             id: 1,
-            dateOfBirth: 'April 13,1998',
+            birthYear: 1998,
+            birthMonth: 4,
+            birthDay: 13,
             firstName: 'tom',
             lastName: 'bradly'),
       );
@@ -17,7 +19,7 @@ void main() {
           id: 1,
           firstName: 'tom',
           lastName: 'bradly',
-          birthDate: 'April 13,1998',
+          birthDate: 'April 13, 1998',
         ),
       );
     });
@@ -27,14 +29,16 @@ void main() {
           id: 1,
           firstName: 'tom',
           lastName: 'bradly',
-          birthDate: 'April 13,1998',
+          birthDate: 'April 13, 1998',
         ),
       );
       expect(
         res,
         PersonDTO(
             id: 1,
-            dateOfBirth: 'April 13,1998',
+            birthYear: 1998,
+            birthMonth: 4,
+            birthDay: 13,
             firstName: 'tom',
             lastName: 'bradly'),
       );

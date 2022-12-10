@@ -9,7 +9,7 @@ void main() {
       expect(input.status, FormzInputStatus.invalid);
     });
     test('bank account input right string test', () {
-      const input = BankAccountInput.dirty('123345457634');
+      const input = BankAccountInput.dirty('IR110570033780012625008101');
       expect(input.status, FormzInputStatus.valid);
     });
   });

@@ -25,12 +25,12 @@ void main() {
       build: () => BankAccountBloc(),
       act: (bloc) => bloc.add(
         const BankAccountChanged(
-          account: BankAccount(accountNumber: "2133434556"),
+          account: BankAccount(accountNumber: "ir110570033780012625008101"),
         ),
       ),
       expect: () => [
         const BankAccountState(
-          account: BankAccountInput.dirty('2133434556'),
+          account: BankAccountInput.dirty('ir110570033780012625008101'),
           status: FormzStatus.valid,
         ),
       ],

@@ -18,4 +18,18 @@ class Person extends Equatable {
 
   @override
   bool get stringify => true;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Person &&
+          firstName.toLowerCase() == other.firstName.toLowerCase() &&
+          lastName.toLowerCase() == other.lastName.toLowerCase() &&
+          birthDate == other.birthDate;
+
+  @override
+  int get hashCode =>
+      firstName.toLowerCase().hashCode +
+      lastName.toLowerCase().hashCode +
+      birthDate.hashCode;
 }

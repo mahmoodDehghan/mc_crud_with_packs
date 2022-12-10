@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive_test/hive_test.dart';
 import 'package:mc_crud/mc_crud.dart';
 
@@ -7,33 +8,40 @@ void main() {
   group('customer form bloc tests', () {
     CustomerDTO? customer, customer2;
     setUp(() async {
-      configureDependencies();
+      if (!GetIt.I.isRegistered<CustomerRepository>(
+          instanceName: DefaultConsts.localRep)) {
+        configureDependencies();
+      }
       await setUpTestHive();
       customer = customer ??
           CustomerDTO(
             id: 1,
             email: "email@email.com",
-            bankAccountNumber: '142445',
+            bankAccountNumber: 'ir110570033780012625008101',
             person: PersonDTO(
               id: 1,
               firstName: 'matt',
               lastName: 'perry',
-              dateOfBirth: 'June 14, 1880',
+              birthYear: 1880,
+              birthMonth: 6,
+              birthDay: 14,
             ),
-            phoneNumber: '+124567879',
+            phoneNumber: 989124567879,
           );
       customer2 = customer2 ??
           CustomerDTO(
             id: 1,
             email: "email@email.com",
-            bankAccountNumber: '1425',
+            bankAccountNumber: 'ir110570033780012625008101',
             person: PersonDTO(
               id: 1,
               firstName: 'tom',
               lastName: 'perry',
-              dateOfBirth: 'June 14, 1880',
+              birthYear: 1880,
+              birthMonth: 6,
+              birthDay: 14,
             ),
-            phoneNumber: '+124567879',
+            phoneNumber: 989124567879,
           );
     });
     tearDown(() async {

@@ -10,10 +10,12 @@ void main() {
           id: 1,
           firstName: 'asghar',
           lastName: 'asghari',
-          dateOfBirth: 'June 12, 1890',
+          birthYear: 1890,
+          birthMonth: 6,
+          birthDay: 12,
         ),
         email: 'email@email.com',
-        phoneNumber: '+91223456788',
+        phoneNumber: 91223456788,
         bankAccountNumber: '12345',
       );
       expect(
@@ -32,10 +34,12 @@ void main() {
             id: 1,
             firstName: 'asghar',
             lastName: 'asghari',
-            dateOfBirth: 'June 12, 1890',
+            birthYear: 1890,
+            birthDay: 12,
+            birthMonth: 6,
           ),
           email: 'email@email.com',
-          phoneNumber: '+91223456788',
+          phoneNumber: 91223456788,
           bankAccountNumber: '12345',
         )
       ];

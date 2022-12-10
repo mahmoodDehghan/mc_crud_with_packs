@@ -51,4 +51,23 @@ class Customer extends Equatable {
 
   @override
   bool get stringify => true;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Customer &&
+          email.toLowerCase() == other.email.toLowerCase() &&
+          person == other.person &&
+          bankAccountNumber.toLowerCase() ==
+              other.bankAccountNumber.toLowerCase() &&
+          phone == other.phone &&
+          id == other.id;
+
+  @override
+  int get hashCode =>
+      email.toLowerCase().hashCode +
+      person.hashCode +
+      bankAccountNumber.hashCode +
+      phone.hashCode +
+      id.hashCode;
 }

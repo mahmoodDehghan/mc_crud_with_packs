@@ -156,7 +156,7 @@ void main() {
         person: customer.person,
         email: customer.email,
         phoneNumber: customer.phoneNumber,
-        bankAccountNumber: '234565',
+        bankAccountNumber: 'IR110570033780012625008101',
       );
       await dataSource.updateCustomer(
         updatedCustomer.id,
@@ -203,11 +203,13 @@ CustomerDTO createTempCustomer2() {
       id: 2,
       firstName: 'tom',
       lastName: 'hardy',
-      dateOfBirth: 'July 16, 1991',
+      birthYear: 1991,
+      birthMonth: 7,
+      birthDay: 16,
     ),
     email: 'tom@gmail.com',
-    phoneNumber: '+98913434256',
-    bankAccountNumber: '123356456788',
+    phoneNumber: 989134342567,
+    bankAccountNumber: 'IR110570033780012625008101',
   );
 }
 
@@ -218,11 +220,13 @@ CustomerDTO createTempCustomer() {
       id: 1,
       firstName: 'mahmoud',
       lastName: 'dehghan',
-      dateOfBirth: 'July 16, 1990',
+      birthYear: 1990,
+      birthMonth: 7,
+      birthDay: 16,
     ),
     email: 'mdm1369@gmail.com',
-    phoneNumber: '+989127606447',
-    bankAccountNumber: '123456788',
+    phoneNumber: 989127606447,
+    bankAccountNumber: 'IR110570033780012625008101',
   );
 }
 
@@ -233,11 +237,13 @@ CustomerDTO createTempCustomerSamePerson() {
       id: 2,
       firstName: 'mahmoud',
       lastName: 'dehghan',
-      dateOfBirth: 'July 16, 1990',
+      birthYear: 1990,
+      birthMonth: 7,
+      birthDay: 16,
     ),
     email: 'mdm13@gmail.com',
-    phoneNumber: '+989127606447',
-    bankAccountNumber: '123456788',
+    phoneNumber: 989127606447,
+    bankAccountNumber: 'IR110570033780012625008101',
   );
 }
 
@@ -248,11 +254,13 @@ CustomerDTO createTempCustomerSameEmail() {
       id: 2,
       firstName: 'ali',
       lastName: 'dehghan',
-      dateOfBirth: 'July 16, 1990',
+      birthYear: 1990,
+      birthMonth: 7,
+      birthDay: 16,
     ),
     email: 'mdm1369@gmail.com',
-    phoneNumber: '+989127606447',
-    bankAccountNumber: '123456788',
+    phoneNumber: 989127606447,
+    bankAccountNumber: 'IR110570033780012625008101',
   );
 }
 

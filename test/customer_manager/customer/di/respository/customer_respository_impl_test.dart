@@ -12,13 +12,15 @@ void main() {
             id: 1,
             person: PersonDTO(
               id: 1,
-              dateOfBirth: 'May 01, 1999',
+              birthYear: 1999,
+              birthMonth: 5,
+              birthDay: 1,
               firstName: 'alice',
               lastName: 'wonderland',
             ),
             email: 'email@email.com',
-            phoneNumber: '+98123456783',
-            bankAccountNumber: '213345456',
+            phoneNumber: 989123456783,
+            bankAccountNumber: 'IR110570033780012625008101',
           );
     });
     tearDown(() async {

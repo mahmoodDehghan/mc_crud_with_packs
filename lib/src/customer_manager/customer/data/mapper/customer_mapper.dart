@@ -8,7 +8,7 @@ class CustomerMapper implements Mapper<CustomerDTO, Customer> {
       email: input.email,
       bankAccountNumber: input.bankAccountNumber,
       person: PersonMapper().map(input.person),
-      phone: input.phoneNumber,
+      phone: '+${input.phoneNumber}',
     );
   }
 
@@ -18,7 +18,7 @@ class CustomerMapper implements Mapper<CustomerDTO, Customer> {
       id: input.id,
       person: PersonMapper().reverse(input.person),
       email: input.email,
-      phoneNumber: input.phone,
+      phoneNumber: int.tryParse(input.phone.replaceAll('+', '')) ?? 0,
       bankAccountNumber: input.bankAccountNumber,
     );
   }

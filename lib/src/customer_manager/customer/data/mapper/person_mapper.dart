@@ -7,17 +7,25 @@ class PersonMapper implements Mapper<PersonDTO, Person> {
       id: input.id,
       firstName: input.firstName,
       lastName: input.lastName,
-      birthDate: input.dateOfBirth,
+      birthDate: BirthDate(
+          birthDate: DateTime(
+        input.birthYear!,
+        input.birthMonth!,
+        input.birthDay!,
+      )).birthDateString,
     );
   }
 
   @override
   PersonDTO reverse(Person input) {
+    final date = BirthDate.fromString(input.birthDate);
     return PersonDTO(
       id: input.id,
       firstName: input.firstName,
       lastName: input.lastName,
-      dateOfBirth: input.birthDate,
+      birthYear: date.birthDate.year,
+      birthMonth: date.birthDate.month,
+      birthDay: date.birthDate.day,
     );
   }
 }

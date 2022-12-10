@@ -8,7 +8,9 @@ part 'person_dto.g.dart';
 class PersonDTO extends HiveObject with EquatableMixin {
   PersonDTO({
     required this.id,
-    required this.dateOfBirth,
+    required this.birthDay,
+    required this.birthMonth,
+    required this.birthYear,
     required this.firstName,
     required this.lastName,
   });
@@ -19,14 +21,20 @@ class PersonDTO extends HiveObject with EquatableMixin {
   final String firstName;
   @HiveField(2)
   final String lastName;
-  @HiveField(3)
-  final String dateOfBirth;
+  @HiveField(4)
+  final int? birthYear;
+  @HiveField(5)
+  final int? birthMonth;
+  @HiveField(6)
+  final int? birthDay;
 
   @override
   List<Object> get props => [
         firstName,
         lastName,
-        dateOfBirth,
+        birthDay!,
+        birthMonth!,
+        birthYear!,
       ];
 
   @override
@@ -36,8 +44,21 @@ class PersonDTO extends HiveObject with EquatableMixin {
         JSONKeys.idKey: id,
         JSONKeys.personFirstNameKey: firstName,
         JSONKeys.personLastNameKey: lastName,
-        JSONKeys.personBirthDateKey: dateOfBirth,
+        JSONKeys.personBirthYear: birthYear,
+        JSONKeys.personBirthMonth: birthMonth,
+        JSONKeys.personBirthDay: birthDay,
       };
+
+  PersonDTO toLower() {
+    return PersonDTO(
+      id: id,
+      birthYear: birthYear,
+      birthDay: birthDay,
+      birthMonth: birthMonth,
+      firstName: firstName.toLowerCase(),
+      lastName: lastName.toLowerCase(),
+    );
+  }
 
   factory PersonDTO.fromJson(Map<String, dynamic> json) => PersonDTO(
         id: HashMapUtils.fetchStrictInt(
@@ -52,9 +73,35 @@ class PersonDTO extends HiveObject with EquatableMixin {
           json,
           JSONKeys.personLastNameKey,
         ),
-        dateOfBirth: HashMapUtils.fetchStrictString(
+        birthDay: HashMapUtils.fetchStrictInt(
           json,
-          JSONKeys.personBirthDateKey,
+          JSONKeys.personBirthDay,
+        ),
+        birthYear: HashMapUtils.fetchStrictInt(
+          json,
+          JSONKeys.personBirthYear,
+        ),
+        birthMonth: HashMapUtils.fetchStrictInt(
+          json,
+          JSONKeys.personBirthMonth,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PersonDTO &&
+          firstName.toLowerCase() == other.firstName.toLowerCase() &&
+          lastName.toLowerCase() == other.lastName.toLowerCase() &&
+          birthYear == other.birthYear &&
+          birthMonth == other.birthMonth &&
+          birthDay == other.birthDay;
+
+  @override
+  int get hashCode =>
+      firstName.toLowerCase().hashCode +
+      lastName.toLowerCase().hashCode +
+      birthYear.hashCode +
+      birthMonth.hashCode +
+      birthDay.hashCode;
 }

@@ -18,11 +18,13 @@ void main() {
             id: 1,
             firstName: "tim",
             lastName: "baker",
-            dateOfBirth: 'September 10, 1989',
+            birthYear: 1989,
+            birthMonth: 10,
+            birthDay: 10,
           ),
           email: 'mnsd@sdf.com',
-          phoneNumber: '+989123458765',
-          bankAccountNumber: '1234356');
+          phoneNumber: 989123458765,
+          bankAccountNumber: 'IR110570033780012625008101');
       final rep = CustomerLocalRespositoryImpl();
       await CreateCustomerUsecaseImpl(rep).createCustomer(customer.toJson());
       final res = await GetCustomerUsecaseImpl(rep).getCustomer(1);

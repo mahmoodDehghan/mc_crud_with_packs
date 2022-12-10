@@ -20,7 +20,7 @@ class CustomerDTOAdapter extends TypeAdapter<CustomerDTO> {
       id: fields[0] as int,
       person: fields[1] as PersonDTO,
       email: fields[3] as String,
-      phoneNumber: fields[2] as String,
+      phoneNumber: fields[5] as int?,
       bankAccountNumber: fields[4] as String,
     );
   }
@@ -33,7 +33,7 @@ class CustomerDTOAdapter extends TypeAdapter<CustomerDTO> {
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.person)
-      ..writeByte(2)
+      ..writeByte(5)
       ..write(obj.phoneNumber)
       ..writeByte(3)
       ..write(obj.email)

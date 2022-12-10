@@ -9,13 +9,15 @@ void main() {
           id: 1,
           person: PersonDTO(
             id: 1,
-            dateOfBirth: 'April 13,1998',
+            birthYear: 1998,
+            birthMonth: 4,
+            birthDay: 13,
             firstName: 'eddy',
             lastName: 'morphy',
           ),
           email: 'test@test.com',
-          phoneNumber: '+12345678995',
-          bankAccountNumber: '243345466768',
+          phoneNumber: 9127606447,
+          bankAccountNumber: 'IR110570033780012625008101',
         ),
       );
       expect(
@@ -26,10 +28,10 @@ void main() {
               id: 1,
               firstName: 'eddy',
               lastName: 'morphy',
-              birthDate: 'April 13,1998'),
+              birthDate: 'April 13, 1998'),
           email: 'test@test.com',
-          phone: '+12345678995',
-          bankAccountNumber: '243345466768',
+          phone: '+9127606447',
+          bankAccountNumber: 'IR110570033780012625008101',
         ),
       );
     });
@@ -41,10 +43,10 @@ void main() {
               id: 1,
               firstName: 'eddy',
               lastName: 'morphy',
-              birthDate: 'April 13,1998'),
+              birthDate: 'April 13, 1998'),
           email: 'test@test.com',
-          phone: '+12345678995',
-          bankAccountNumber: '243345466768',
+          phone: '+9127606447',
+          bankAccountNumber: 'IR110570033780012625008101',
         ),
       );
       expect(
@@ -53,13 +55,15 @@ void main() {
           id: 1,
           person: PersonDTO(
             id: 1,
-            dateOfBirth: 'April 13,1998',
+            birthYear: 1998,
+            birthMonth: 4,
+            birthDay: 13,
             firstName: 'eddy',
             lastName: 'morphy',
           ),
           email: 'test@test.com',
-          phoneNumber: '+12345678995',
-          bankAccountNumber: '243345466768',
+          phoneNumber: 9127606447,
+          bankAccountNumber: 'IR110570033780012625008101',
         ),
       );
     });

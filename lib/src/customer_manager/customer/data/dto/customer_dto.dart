@@ -18,8 +18,8 @@ class CustomerDTO extends HiveObject with EquatableMixin {
   final int id;
   @HiveField(1)
   final PersonDTO person;
-  @HiveField(2)
-  final String phoneNumber;
+  @HiveField(5)
+  final int? phoneNumber;
   @HiveField(3)
   final String email;
   @HiveField(4)
@@ -30,10 +30,19 @@ class CustomerDTO extends HiveObject with EquatableMixin {
         person: PersonDTO.fromJson(
             json[JSONKeys.personKey] as Map<String, dynamic>),
         email: HashMapUtils.fetchStrictString(json, JSONKeys.emailKey),
-        phoneNumber: HashMapUtils.fetchStrictString(json, JSONKeys.phoneKey),
+        phoneNumber: HashMapUtils.fetchStrictInt(json, JSONKeys.phoneKey),
         bankAccountNumber:
             HashMapUtils.fetchStrictString(json, JSONKeys.bankAccountKey),
       );
+
+  CustomerDTO toLower() {
+    return CustomerDTO(
+        id: id,
+        person: person.toLower(),
+        email: email.toLowerCase(),
+        phoneNumber: phoneNumber!,
+        bankAccountNumber: bankAccountNumber.toLowerCase());
+  }
 
   Map<String, dynamic> toJson() => {
         JSONKeys.idKey: id,
@@ -45,8 +54,27 @@ class CustomerDTO extends HiveObject with EquatableMixin {
 
   @override
   List<Object> get props =>
-      [person, email, person, bankAccountNumber, phoneNumber, id];
+      [person, email, bankAccountNumber, phoneNumber!, id];
 
   @override
   bool get stringify => true;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CustomerDTO &&
+          email.toLowerCase() == other.email.toLowerCase() &&
+          bankAccountNumber.toLowerCase() ==
+              other.bankAccountNumber.toLowerCase() &&
+          person == other.person &&
+          phoneNumber == other.phoneNumber &&
+          id == other.id;
+
+  @override
+  int get hashCode =>
+      email.toLowerCase().hashCode +
+      bankAccountNumber.toLowerCase().hashCode +
+      person.hashCode +
+      phoneNumber.hashCode +
+      id.hashCode;
 }

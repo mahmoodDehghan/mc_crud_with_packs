@@ -74,8 +74,8 @@ Feature: Customer Management
 
   Scenario: Read all customers 
     GIVEN create a customer with these details: 
-      | firstName | lastName  | birthDate     | email               | phoneNumber     | bankAccountNumber            | 
-      | mahmood | dehghan | July 16, 1990 | mdm1369@gmail.com | +989127606447 | IR110570033780012625008101 |
+      | firstName | lastName  | birthDate     | email             | phoneNumber     | bankAccountNumber            | 
+      | mahmood   | dehghan   | July 16, 1990 | mdm1369@gmail.com | +989127606447   | IR110570033780012625008101   |
     WHEN user request get all customers
     THEN customers list loaded with:
       | firstName | lastName  | birthDate     | email               | phoneNumber     | bankAccountNumber            | 

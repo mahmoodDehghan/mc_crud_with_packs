@@ -22,14 +22,27 @@ StepDefinitionGeneric whenSubmitFormCreate() {
       final rep = CustomerLocalRespositoryImpl();
       final customers = await GetAllCustomerUseCaseImpl(rep).getCustomersList();
       final id = customers.result!.isEmpty ? 1 : customers.result!.length + 1;
+      final date = BirthDate.fromString(isBlank(dateOfBirth));
       await CreateCustomerUsecaseImpl(rep).createCustomer({
         JSONKeys.idKey: id,
         JSONKeys.personKey: PersonDTO(
           id: id,
           firstName: isBlank(firstName),
           lastName: isBlank(lastName),
-          dateOfBirth: isBlank(dateOfBirth),
+          birthYear: date.birthDate.year,
+          birthMonth: date.birthDate.month,
+          birthDay: date.birthDate.day,
         ).toJson(),
+        // PersonMapper()
+        //     .reverse(
+        //       Person(
+        //         id: id,
+        //         firstName: isBlank(firstName),
+        //         lastName: isBlank(lastName),
+        //         birthDate: isBlank(dateOfBirth),
+        //       ),
+        //     )
+        //     .toJson,
         JSONKeys.emailKey: isBlank(email),
         JSONKeys.phoneKey: isBlank(mobile),
         JSONKeys.bankAccountKey: isBlank(bankAccount),

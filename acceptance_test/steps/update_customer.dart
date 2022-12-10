@@ -18,6 +18,7 @@ StepDefinitionGeneric whenUpdateFirstCustomer() {
       final email = columns.elementAt(0)['email'] ?? "";
       final mobile = columns.elementAt(0)['phoneNumber'] ?? "";
       final bankAccount = columns.elementAt(0)['bankAccountNumber'] ?? "";
+      final date = BirthDate.fromString(isBlank(dateOfBirth));
       await UpdateCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
           .updateCustomer(1, {
         JSONKeys.idKey: 1,
@@ -25,8 +26,17 @@ StepDefinitionGeneric whenUpdateFirstCustomer() {
           id: 1,
           firstName: isBlank(firstName),
           lastName: isBlank(lastName),
-          dateOfBirth: isBlank(dateOfBirth),
+          birthYear: date.birthDate.year,
+          birthMonth: date.birthDate.month,
+          birthDay: date.birthDate.day,
         ).toJson(),
+        // PersonMapper()
+        //     .reverse(Person(
+        //         id: 1,
+        //         firstName: isBlank(firstName),
+        //         lastName: isBlank(lastName),
+        //         birthDate: isBlank(dateOfBirth)))
+        //     .toJson(),
         JSONKeys.emailKey: isBlank(email),
         JSONKeys.phoneKey: isBlank(mobile),
         JSONKeys.bankAccountKey: isBlank(bankAccount),

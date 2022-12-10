@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unnecessary_const
+
 part of 'gherkin_suite_test.dart';
 
 // **************************************************************************
@@ -727,7 +729,6 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 void executeTestSuite({
   required FlutterTestConfiguration configuration,
   required StartAppFn appMainFunction,
-  // ignore: unnecessary_const
   Timeout scenarioExecutionTimeout = const Timeout(const Duration(minutes: 10)),
   AppLifecyclePumpHandlerFn? appLifecyclePumpHandler,
   LiveTestWidgetsFlutterBindingFramePolicy? framePolicy,
