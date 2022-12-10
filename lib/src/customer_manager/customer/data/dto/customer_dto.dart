@@ -44,9 +44,8 @@ class CustomerDTO extends HiveObject with EquatableMixin {
       };
 
   @override
-  List<Object> get props => [
-        person,
-      ];
+  List<Object> get props =>
+      [person, email, person, bankAccountNumber, phoneNumber, id];
 
   @override
   bool get stringify => true;

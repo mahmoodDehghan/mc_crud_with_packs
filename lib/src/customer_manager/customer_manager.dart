@@ -143,3 +143,7 @@ export './customer/presentation/widgets/provider/phone_number_widget.dart'
     show PhoneNumberWidget;
 export './customer/presentation/widgets/atom/pickers/phone_number_picker_widget.dart'
     show PhoneNumberPickerWidget;
+export './customer/domain/model/birth_date/birth_date_input.dart'
+    show BirthDateInput;
+export './customer/domain/model/mobile/mobile_number_input.dart'
+    show MobileNumberInput;

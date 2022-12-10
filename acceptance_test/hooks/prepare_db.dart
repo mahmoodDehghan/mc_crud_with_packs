@@ -30,7 +30,7 @@ class PrepareDB extends Hook {
   @override
   Future<void> onBeforeScenario(
       TestConfiguration config, String scenario, Iterable<Tag> tags) async {
-    await CustomerManagerInit.initCustomerLib();
+    // await CustomerManagerInit.initCustomerLib();
     // await CreateCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
     //     .createCustomer({
     //   JSONKeys.idKey: 1,

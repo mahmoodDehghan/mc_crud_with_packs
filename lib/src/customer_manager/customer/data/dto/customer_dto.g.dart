@@ -18,7 +18,7 @@ class CustomerDTOAdapter extends TypeAdapter<CustomerDTO> {
     };
     return CustomerDTO(
       id: fields[0] as int,
-      person: fields[1] as dynamic,
+      person: fields[1] as PersonDTO,
       email: fields[3] as String,
       phoneNumber: fields[2] as String,
       bankAccountNumber: fields[4] as String,

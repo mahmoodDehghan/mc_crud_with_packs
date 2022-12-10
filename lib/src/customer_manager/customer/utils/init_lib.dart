@@ -3,13 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mc_crud/mc_crud.dart';
+import 'package:get_it/get_it.dart';
 
 class CustomerManagerInit {
   // static LocalizationsDelegate<dynamic> localizationDelegate =
   //     CustomerLocalizations.delegate;
 
   static Future<void> initCustomerLib() async {
-    configureDependencies();
+    if (!GetIt.I.isRegistered<CustomerRepository>(
+        instanceName: DefaultConsts.localRep)) {
+      configureDependencies();
+    }
     await Hive.initFlutter();
   }
 

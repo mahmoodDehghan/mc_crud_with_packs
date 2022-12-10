@@ -22,7 +22,7 @@ class PhoneNumberBloc extends Bloc<PhoneNumberEvent, PhoneNumberState> {
     emit(
       state.copyWith(
         phoneNumber: event.phoneNumber,
-        status: event.phoneNumber.isValid(),
+        status: event.phoneNumber.isValid(type: PhoneNumberType.mobile),
       ),
     );
   }

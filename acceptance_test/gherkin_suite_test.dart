@@ -66,9 +66,9 @@ void main() {
         StdoutReporter(MessageLevel.error)
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        // ProgressReporter()
-        //   ..setWriteLineFn(print)
-        //   ..setWriteFn(print),
+        ProgressReporter()
+          ..setWriteLineFn(print)
+          ..setWriteFn(print),
         TestRunSummaryReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),

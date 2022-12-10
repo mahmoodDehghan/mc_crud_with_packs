@@ -1,3 +1,4 @@
+import 'package:formz/formz.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mc_crud/mc_crud.dart';
 import 'package:mc_crud/src/customer_manager/customer/data/dto/customer_dto.dart';
@@ -20,7 +21,9 @@ class CustomerLocalDataSource {
   }
 
   GeneralResult<CustomerDTO> checkPersonExists(CustomerDTO customer) {
-    if (_customerBox!.values.contains(customer)) {
+    if (_customerBox!.values
+        .where((c) => c.person == customer.person)
+        .isNotEmpty) {
       return GeneralResult.failedResult<CustomerDTO>(
           "person with these details already registered!");
     }
@@ -37,28 +40,48 @@ class CustomerLocalDataSource {
   }
 
   GeneralResult<bool> checkUpdatePersonExists(CustomerDTO customer) {
-    if (_customerBox!.values.contains(customer)) {
-      if (_customerBox!.values
-              .firstWhere((element) => element.person == customer.person)
-              .id !=
-          customer.id) {
-        return GeneralResult.failedResult<bool>(
-            "person with these details already registered!");
-      }
+    final others = _customerBox!.values
+        .where((element) => element.id != customer.id)
+        .toList();
+    if (others.any((c) => c.person == customer.person)) {
+      return GeneralResult.failedResult<bool>(
+          "person with these details already registered!");
     }
     return GeneralResult.successResult(true);
   }
 
   GeneralResult<bool> checkUpdateEmailUnity(CustomerDTO customer) {
-    if (_customerBox!.values
-        .any((element) => element.email == customer.email)) {
-      if (_customerBox!.values
-              .firstWhere((element) => element.email == customer.email)
-              .id !=
-          customer.id) {
-        return GeneralResult.failedResult<bool>(
-            "this email already registered!");
-      }
+    final others = _customerBox!.values
+        .where((element) => element.id != customer.id)
+        .toList();
+
+    if (others.any((c) => c.email == customer.email)) {
+      return GeneralResult.failedResult<bool>("this email already registered!");
+    }
+    return GeneralResult.successResult(true);
+  }
+
+  GeneralResult<bool> checkEntriesValidations(CustomerDTO customer) {
+    BankAccountInput bankAccountInput =
+        BankAccountInput.dirty(customer.bankAccountNumber);
+    EmailInput emailInput = EmailInput.dirty(customer.email);
+    FirstNameInput firstNameInput =
+        FirstNameInput.dirty(customer.person.firstName);
+    LastNameInput lastNameInput = LastNameInput.dirty(customer.person.lastName);
+    MobileNumberInput mobileNumberInput =
+        MobileNumberInput.dirty(customer.phoneNumber);
+    BirthDateInput birthDate =
+        BirthDateInput.dirty(customer.person.dateOfBirth);
+    final status = Formz.validate([
+      bankAccountInput,
+      emailInput,
+      firstNameInput,
+      lastNameInput,
+      mobileNumberInput,
+      birthDate,
+    ]);
+    if (status.isInvalid) {
+      return GeneralResult.failedResult<bool>("entry format is invalid!");
     }
     return GeneralResult.successResult(true);
   }
@@ -67,6 +90,11 @@ class CustomerLocalDataSource {
       Map<String, dynamic> entry) async {
     await checkInitiation();
     final newCustomer = CustomerDTO.fromJson(entry);
+    final validationCheck = checkEntriesValidations(newCustomer);
+    if ((validationCheck.errorMessage ?? '').isNotEmpty) {
+      return GeneralResult.failedResult<CustomerDTO>(
+          validationCheck.errorMessage.toString());
+    }
     try {
       final res = checkPersonExists(newCustomer);
       if ((res.errorMessage ?? '').isNotEmpty) {
@@ -129,6 +157,11 @@ class CustomerLocalDataSource {
     try {
       if (_customerBox!.keys.contains(id)) {
         final updatedCustomer = CustomerDTO.fromJson(entry);
+        final validationCheck = checkEntriesValidations(updatedCustomer);
+        if ((validationCheck.errorMessage ?? '').isNotEmpty) {
+          return GeneralResult.failedResult<bool>(
+              validationCheck.errorMessage.toString());
+        }
         final personCheck = checkUpdatePersonExists(updatedCustomer);
         if ((personCheck.errorMessage ?? '').isNotEmpty) {
           return personCheck;

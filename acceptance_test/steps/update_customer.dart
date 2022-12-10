@@ -3,29 +3,33 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:mc_crud/mc_crud.dart';
 
+String isBlank(String entry) {
+  return entry == '[blank]' ? '' : entry;
+}
+
 StepDefinitionGeneric whenUpdateFirstCustomer() {
   return when1<GherkinTable, FlutterWorld>(
     'user updates a first customer to these details:',
     (dataTable, context) async {
       final columns = dataTable.asMap();
-      final firstName = columns.elementAt(0)['firstName'];
-      final lastName = columns.elementAt(0)['lastName'];
-      final dateOfBirth = columns.elementAt(0)['birthDate'];
-      final email = columns.elementAt(0)['email'];
-      final mobile = columns.elementAt(0)['phoneNumber'];
-      final bankAccount = columns.elementAt(0)['bankAccountNumber'];
+      final firstName = columns.elementAt(0)['firstName'] ?? "";
+      final lastName = columns.elementAt(0)['lastName'] ?? "";
+      final dateOfBirth = columns.elementAt(0)['birthDate'] ?? "";
+      final email = columns.elementAt(0)['email'] ?? "";
+      final mobile = columns.elementAt(0)['phoneNumber'] ?? "";
+      final bankAccount = columns.elementAt(0)['bankAccountNumber'] ?? "";
       await UpdateCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
           .updateCustomer(1, {
         JSONKeys.idKey: 1,
         JSONKeys.personKey: PersonDTO(
           id: 1,
-          firstName: firstName!,
-          lastName: lastName!,
-          dateOfBirth: dateOfBirth!,
+          firstName: isBlank(firstName),
+          lastName: isBlank(lastName),
+          dateOfBirth: isBlank(dateOfBirth),
         ).toJson(),
-        JSONKeys.emailKey: email!,
-        JSONKeys.phoneKey: mobile!,
-        JSONKeys.bankAccountKey: bankAccount!,
+        JSONKeys.emailKey: isBlank(email),
+        JSONKeys.phoneKey: isBlank(mobile),
+        JSONKeys.bankAccountKey: isBlank(bankAccount),
       });
     },
   );
