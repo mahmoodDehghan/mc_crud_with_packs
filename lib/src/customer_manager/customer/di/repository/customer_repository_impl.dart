@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:mc_crud/mc_crud.dart';
+import 'package:mc_crud/src/customer_manager/customer/utils/general_error.dart';
 
 @Named(DefaultConsts.localRep)
 @Singleton(as: CustomerRepository)
@@ -15,7 +16,7 @@ class CustomerLocalRespositoryImpl extends CustomerRepository {
     if (res.hasResult()) {
       return MapperUtils.mapResult(res.result!);
     } else {
-      return GeneralResult.failedResult<Customer>(res.errorMessage!);
+      return GeneralResult.failedResult<Customer>(res.error!);
     }
   }
 
@@ -30,7 +31,7 @@ class CustomerLocalRespositoryImpl extends CustomerRepository {
     if (res.hasResult()) {
       return MapperUtils.mapResults(res.result!);
     } else {
-      return GeneralResult.failedResult(res.errorMessage!);
+      return GeneralResult.failedResult(res.error!);
     }
   }
 
@@ -42,10 +43,14 @@ class CustomerLocalRespositoryImpl extends CustomerRepository {
         final customer = CustomerMapper().map(res.result!);
         return GeneralResult.successResult<Customer>(customer);
       } catch (e) {
-        return GeneralResult.failedResult<Customer>(e.toString());
+        return GeneralResult.failedResult<Customer>(
+          GeneralError.generalError(
+            e.toString(),
+          ),
+        );
       }
     }
-    return GeneralResult.failedResult<Customer>(res.errorMessage!);
+    return GeneralResult.failedResult<Customer>(res.error!);
   }
 
   @override

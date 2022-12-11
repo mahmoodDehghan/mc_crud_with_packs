@@ -38,6 +38,7 @@ class BankAccountPicker extends HookWidget {
         decoration: InputDecoration(
           icon: const Icon(Icons.attach_money),
           helperText: "e.g. IR**********************",
+          hintText: 'bankAccountNumber',
           errorText: state.account.invalid
               ? state.account.value.isEmpty
                   ? requiredError ?? "Bank Account is Required!"

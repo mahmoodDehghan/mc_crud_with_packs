@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mc_crud/mc_crud.dart';
+import 'package:mc_crud/src/customer_manager/customer/utils/general_error.dart';
 
 part 'customer_show_event.dart';
 part 'customer_show_state.dart';
@@ -40,7 +41,8 @@ class CustomerShowBloc extends Bloc<CustomerShowEvent, CustomerShowState> {
       final customerReq =
           await GetCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
               .getCustomer(id);
-      final errMessage = customerReq.errorMessage ?? '';
+      final errMessage =
+          (customerReq.error ?? GeneralError.empty()).errorMessage;
       if (errMessage.isNotEmpty) {
         emit(
           state.copyWith(
@@ -77,7 +79,8 @@ class CustomerShowBloc extends Bloc<CustomerShowEvent, CustomerShowState> {
       state.copyWith(
         currentCustomer: event.currentCustomer.result,
         allCustomers: state.allCustomers,
-        showMessage: event.currentCustomer.errorMessage,
+        showMessage:
+            (event.currentCustomer.error ?? GeneralError.empty()).errorMessage,
       ),
     );
   }
@@ -88,7 +91,7 @@ class CustomerShowBloc extends Bloc<CustomerShowEvent, CustomerShowState> {
       currentCustomer: state.currentCustomer,
       allCustomers: event.customersList.result ?? <Customer>[],
       showMessage: event.message.isEmpty
-          ? event.customersList.errorMessage
+          ? (event.customersList.error ?? GeneralError.empty()).errorMessage
           : event.message,
     ));
   }
@@ -98,12 +101,13 @@ class CustomerShowBloc extends Bloc<CustomerShowEvent, CustomerShowState> {
     final customersReq = await GetAllCustomerUseCaseImpl(
       CustomerLocalRespositoryImpl(),
     ).getCustomersList();
-    if (customersReq.errorMessage!.isNotEmpty) {
+    if ((customersReq.error ?? GeneralError.empty()) != GeneralError.empty()) {
       emit(
         state.copyWith(
           currentCustomer: state.currentCustomer,
           allCustomers: state.allCustomers,
-          showMessage: customersReq.errorMessage,
+          showMessage:
+              (customersReq.error ?? GeneralError.empty()).errorMessage,
           status: CustomerShowStatus.fail,
         ),
       );

@@ -8,12 +8,14 @@ class NameInputWidget extends HookWidget {
     Key? key,
     this.iconData,
     this.helperText,
+    this.hintText,
     this.requiredError,
     this.isFirstName = false,
     required this.inputKey,
   }) : super(key: key);
 
   final String? helperText;
+  final String? hintText;
   final IconData? iconData;
   final String? requiredError;
   final bool isFirstName;
@@ -39,6 +41,7 @@ class NameInputWidget extends HookWidget {
           autovalidateMode: AutovalidateMode.always,
           decoration: InputDecoration(
             icon: Icon(iconData ?? Icons.person),
+            hintText: hintText,
             helperText: helperText,
             errorText: ((isFirstName && state.firstName.invalid) ||
                     (!isFirstName && state.lastName.invalid))

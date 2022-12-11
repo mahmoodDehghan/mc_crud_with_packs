@@ -42,6 +42,7 @@ class EmailInputWidget extends HookWidget {
           decoration: InputDecoration(
             icon: Icon(icon ?? Icons.email),
             helperText: helperText ?? "e.g. mdm@gmail.com",
+            hintText: 'email',
             errorText: state.email.invalid
                 ? state.email.value.isEmpty
                     ? requiredError ?? "Email is Required!"

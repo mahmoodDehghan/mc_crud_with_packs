@@ -193,9 +193,12 @@ class CustomerForm extends StatelessWidget {
         context.read<CustomerShowBloc>().add(
               SetInProgress(),
             );
-        context.read<CustomerShowBloc>().add(
-              LoadCustomersList(),
-            );
+        if (state.isDoneRight) {
+          context.read<CustomerShowBloc>().add(
+                LoadCustomersList(),
+              );
+          Navigator.of(context).pop();
+        }
       },
       listenWhen: (previous, current) {
         return (previous.status == CustomerFormStatus.pending) &&

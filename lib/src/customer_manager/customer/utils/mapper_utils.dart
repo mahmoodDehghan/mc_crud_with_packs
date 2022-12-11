@@ -1,4 +1,5 @@
 import 'package:mc_crud/mc_crud.dart';
+import 'package:mc_crud/src/customer_manager/customer/utils/general_error.dart';
 
 class MapperUtils {
   static GeneralResult<Customer> mapResult(CustomerDTO result) {
@@ -8,7 +9,10 @@ class MapperUtils {
       );
     } catch (e) {
       return GeneralResult.failedResult<Customer>(
-        e.toString(),
+        GeneralError(
+          errorMessage: e.toString(),
+          errorCode: DefaultConsts.convertErrorCode,
+        ),
       );
     }
   }
@@ -24,7 +28,10 @@ class MapperUtils {
       );
     } catch (e) {
       return GeneralResult.failedResult<List<Customer>>(
-        e.toString(),
+        GeneralError(
+          errorMessage: e.toString(),
+          errorCode: DefaultConsts.convertErrorCode,
+        ),
       );
     }
   }

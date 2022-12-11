@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mc_crud/mc_crud.dart';
+import 'package:mc_crud/src/customer_manager/customer/utils/general_error.dart';
 
 part 'customer_form_event.dart';
 part 'customer_form_state.dart';
@@ -50,7 +51,7 @@ class CustomerFormBloc extends Bloc<CustomerFormEvent, CustomerFormState> {
       final customerReq =
           await GetCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
               .getCustomer(id);
-      if ((customerReq.errorMessage ?? '').isEmpty) {
+      if ((customerReq.error ?? GeneralError.empty()).isEmpty) {
         emit(
           state.copyWith(
             customer: customerReq.result,
@@ -75,11 +76,11 @@ class CustomerFormBloc extends Bloc<CustomerFormEvent, CustomerFormState> {
       final createReq = await CreateCustomerUsecaseImpl(
         CustomerLocalRespositoryImpl(),
       ).createCustomer(event.entry);
-      if ((createReq.errorMessage ?? '').isNotEmpty) {
+      if ((createReq.error ?? GeneralError.empty()) != GeneralError.empty()) {
         emit(
           state.copyWith(
             status: CustomerFormStatus.failed,
-            formMessage: createReq.errorMessage,
+            formMessage: createReq.error!.errorMessage,
           ),
         );
       } else {
@@ -120,7 +121,7 @@ class CustomerFormBloc extends Bloc<CustomerFormEvent, CustomerFormState> {
         emit(
           state.copyWith(
             status: CustomerFormStatus.failed,
-            formMessage: delReq.errorMessage,
+            formMessage: delReq.error!.errorMessage,
           ),
         );
       }
@@ -154,7 +155,7 @@ class CustomerFormBloc extends Bloc<CustomerFormEvent, CustomerFormState> {
         if (!err) {
           emit(state.copyWith(
             status: CustomerFormStatus.failed,
-            formMessage: updateReq.errorMessage,
+            formMessage: updateReq.error!.errorMessage,
           ));
         } else {
           emit(

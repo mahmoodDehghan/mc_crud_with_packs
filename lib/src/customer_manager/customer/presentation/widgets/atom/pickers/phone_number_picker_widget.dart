@@ -27,9 +27,10 @@ class PhoneNumberPickerWidget extends HookWidget {
         decoration: InputDecoration(
           icon: const Icon(Icons.phone_android_rounded),
           helperText: "for auto country start with +",
+          hintText: "mobileNumber",
           errorText: !state.status && !state.pure
               ? state.phoneNumber.nsn.isEmpty
-                  ? 'Phone number is Required!'
+                  ? 'Mobile number is Required!'
                   : 'Invalid mobile number'
               : null,
         ),

@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mc_crud/mc_crud.dart';
 import 'package:mc_crud/src/customer_manager/customer/data/dto/customer_dto.dart';
 import 'package:mc_crud/src/customer_manager/customer/data/dto/person_dto.dart';
+import 'package:mc_crud/src/customer_manager/customer/utils/general_error.dart';
 
 class CustomerLocalDataSource {
   Box<CustomerDTO>? _customerBox;
@@ -25,7 +26,10 @@ class CustomerLocalDataSource {
         .where((c) => c.person.toLower() == customer.person.toLower())
         .isNotEmpty) {
       return GeneralResult.failedResult<CustomerDTO>(
-          "person with these details already registered!");
+        GeneralError.duplicatePerson(),
+      );
+      //(errorMessage: De, errorCode: errorCode)
+      // "person with these details already registered!");
     }
     return GeneralResult.successResult(customer);
   }
@@ -34,7 +38,8 @@ class CustomerLocalDataSource {
     if (_customerBox!.values
         .any((element) => element.email == customer.email)) {
       return GeneralResult.failedResult<CustomerDTO>(
-          "this email already registered!");
+        GeneralError.duplicateEmail(),
+      );
     }
     return GeneralResult.successResult(customer);
   }
@@ -45,7 +50,9 @@ class CustomerLocalDataSource {
         .toList();
     if (others.any((c) => c.person == customer.person)) {
       return GeneralResult.failedResult<bool>(
-          "person with these details already registered!");
+        GeneralError.duplicatePerson(),
+      );
+      // "person with these details already registered!");
     }
     return GeneralResult.successResult(true);
   }
@@ -56,7 +63,11 @@ class CustomerLocalDataSource {
         .toList();
 
     if (others.any((c) => c.email == customer.email)) {
-      return GeneralResult.failedResult<bool>("this email already registered!");
+      return GeneralResult.failedResult<bool>(
+        GeneralError.duplicateEmail(),
+      );
+      // "this email already registered!"
+      // );
     }
     return GeneralResult.successResult(true);
   }
@@ -83,7 +94,27 @@ class CustomerLocalDataSource {
       birthDate,
     ]);
     if (status.isInvalid) {
-      return GeneralResult.failedResult<bool>("entry format is invalid!");
+      if (emailInput.invalid) {
+        return GeneralResult.failedResult(GeneralError.emailFormatError());
+      }
+      if (mobileNumberInput.invalid) {
+        return GeneralResult.failedResult(GeneralError.mobileFormatError());
+      }
+      if (bankAccountInput.invalid) {
+        return GeneralResult.failedResult(GeneralError.bankAccountError());
+      }
+      if (birthDate.invalid) {
+        return GeneralResult.failedResult(GeneralError.birthDateError());
+      }
+      if (firstNameInput.invalid) {
+        return GeneralResult.failedResult(GeneralError.firstNameError());
+      }
+      if (lastNameInput.invalid) {
+        return GeneralResult.failedResult(GeneralError.lastNameError());
+      }
+      // return GeneralResult.failedResult<bool>(
+      //   GeneralError(errorMessage: errorMessage, errorCode: errorCode)
+      //   "entry format is invalid!");
     }
     return GeneralResult.successResult(true);
   }
@@ -93,17 +124,17 @@ class CustomerLocalDataSource {
     await checkInitiation();
     final newCustomer = CustomerDTO.fromJson(entry);
     final validationCheck = checkEntriesValidations(newCustomer);
-    if ((validationCheck.errorMessage ?? '').isNotEmpty) {
-      return GeneralResult.failedResult<CustomerDTO>(
-          validationCheck.errorMessage.toString());
+    if ((validationCheck.error ?? GeneralError.empty()) !=
+        GeneralError.empty()) {
+      return GeneralResult.failedResult<CustomerDTO>(validationCheck.error!);
     }
     try {
       final res = checkPersonExists(newCustomer);
-      if ((res.errorMessage ?? '').isNotEmpty) {
+      if ((res.error ?? GeneralError.empty()) != GeneralError.empty()) {
         return res;
       }
       final emailCheck = checkEmailUnity(newCustomer);
-      if ((emailCheck.errorMessage ?? '').isNotEmpty) {
+      if ((emailCheck.error ?? GeneralError.empty()) != GeneralError.empty()) {
         return emailCheck;
       } else {
         await _customerBox!.put(newCustomer.id, newCustomer.toLower());
@@ -111,7 +142,8 @@ class CustomerLocalDataSource {
         return res;
       }
     } catch (e) {
-      return GeneralResult.failedResult<CustomerDTO>(e.toString());
+      return GeneralResult.failedResult<CustomerDTO>(
+          GeneralError.generalError(e.toString()));
     }
   }
 
@@ -122,10 +154,11 @@ class CustomerLocalDataSource {
         await _customerBox!.delete(id);
         return GeneralResult.successResult<bool>(true);
       } catch (e) {
-        return GeneralResult.failedResult<bool>(e.toString());
+        return GeneralResult.failedResult<bool>(
+            GeneralError.generalError(e.toString()));
       }
     } else {
-      return GeneralResult.failedResult<bool>(DefaultConsts.notFound);
+      return GeneralResult.failedResult<bool>(GeneralError.customerNotFound());
     }
   }
 
@@ -136,7 +169,10 @@ class CustomerLocalDataSource {
         _customerBox!.values.toList(),
       );
     } catch (e) {
-      return GeneralResult.failedResult<List<CustomerDTO>>(e.toString());
+      return GeneralResult.failedResult<List<CustomerDTO>>(
+          GeneralError.generalError(
+        e.toString(),
+      ));
     }
   }
 
@@ -146,10 +182,13 @@ class CustomerLocalDataSource {
       if (_customerBox!.keys.contains(id)) {
         return GeneralResult.successResult<CustomerDTO>(_customerBox!.get(id)!);
       } else {
-        return GeneralResult.failedResult<CustomerDTO>(DefaultConsts.notFound);
+        return GeneralResult.failedResult<CustomerDTO>(
+            GeneralError.customerNotFound());
       }
     } catch (e) {
-      return GeneralResult.failedResult<CustomerDTO>(e.toString());
+      return GeneralResult.failedResult<CustomerDTO>(
+        GeneralError.generalError(e.toString()),
+      );
     }
   }
 
@@ -160,25 +199,34 @@ class CustomerLocalDataSource {
       if (_customerBox!.keys.contains(id)) {
         final updatedCustomer = CustomerDTO.fromJson(entry);
         final validationCheck = checkEntriesValidations(updatedCustomer);
-        if ((validationCheck.errorMessage ?? '').isNotEmpty) {
+        if ((validationCheck.error ?? GeneralError.empty()) !=
+            GeneralError.empty()) {
           return GeneralResult.failedResult<bool>(
-              validationCheck.errorMessage.toString());
+            validationCheck.error!,
+          );
         }
         final personCheck = checkUpdatePersonExists(updatedCustomer);
-        if ((personCheck.errorMessage ?? '').isNotEmpty) {
+        if ((personCheck.error ?? GeneralError.empty()) !=
+            GeneralError.empty()) {
           return personCheck;
         }
         final emailCheck = checkUpdateEmailUnity(updatedCustomer);
-        if ((emailCheck.errorMessage ?? '').isNotEmpty) {
+        if ((emailCheck.error ?? GeneralError.empty()) !=
+            GeneralError.empty()) {
           return emailCheck;
         }
         await _customerBox!.put(id, updatedCustomer);
         return GeneralResult.successResult<bool>(true);
       } else {
-        return GeneralResult.failedResult<bool>(DefaultConsts.notFound);
+        return GeneralResult.failedResult<bool>(
+            GeneralError.customerNotFound());
       }
     } catch (e) {
-      return GeneralResult.failedResult<bool>(e.toString());
+      return GeneralResult.failedResult<bool>(
+        GeneralError.generalError(
+          e.toString(),
+        ),
+      );
     }
   }
 }

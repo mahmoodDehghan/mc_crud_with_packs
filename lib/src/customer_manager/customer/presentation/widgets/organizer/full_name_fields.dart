@@ -32,6 +32,7 @@ class FullNameFields extends StatelessWidget {
         NameInputWidget(
           inputKey: firstNameKey ?? const ValueKey('firstName'),
           iconData: firstNameIcon ?? Icons.person,
+          hintText: 'firstName',
           helperText: firstNameHelperText ?? "e.g. mahmood",
           requiredError: firstNameRequiredError ?? "FirstName is Required!",
           isFirstName: true,
@@ -42,6 +43,7 @@ class FullNameFields extends StatelessWidget {
         NameInputWidget(
           inputKey: lastNameKey ?? const ValueKey('lastName'),
           iconData: lastNameIcon ?? Icons.person_outline,
+          hintText: 'lastName',
           helperText: lastNameHelperText ?? "e.g. dehghan",
           requiredError: lastNameRequiredError ?? "LastName is Required!",
           isFirstName: false,
