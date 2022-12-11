@@ -14,11 +14,12 @@ StepDefinitionGeneric whenEditUser() {
       final columns = dataTable.asMap();
       final firstName = columns.elementAt(0)['FirstName'] ?? "";
       final lastName = columns.elementAt(0)['LastName'] ?? "";
-      final dateOfBirth = columns.elementAt(0)['DateOfBirth'] ?? "";
+      final dateOfBirth = BirthDate.fromStringymmmd(
+          BirthDate.dateParser(columns.elementAt(0)['DateOfBirth'] ?? ""));
       final email = columns.elementAt(0)['Email'] ?? "";
       final mobile = columns.elementAt(0)['PhoneNumber'] ?? "";
       final bankAccount = columns.elementAt(0)['BankAccountNumber'] ?? "";
-      final date = BirthDate.fromStringymmmd(isBlank(dateOfBirth));
+      // final res =
       await UpdateCustomerUsecaseImpl(CustomerLocalRespositoryImpl())
           .updateCustomer(1, {
         JSONKeys.idKey: 1,
@@ -26,14 +27,15 @@ StepDefinitionGeneric whenEditUser() {
           id: 1,
           firstName: isBlank(firstName),
           lastName: isBlank(lastName),
-          birthYear: date.birthDate.year,
-          birthMonth: date.birthDate.month,
-          birthDay: date.birthDate.day,
+          birthYear: dateOfBirth.birthDate.year,
+          birthMonth: dateOfBirth.birthDate.month,
+          birthDay: dateOfBirth.birthDate.day,
         ).toJson(),
         JSONKeys.emailKey: isBlank(email),
         JSONKeys.phoneKey: isBlank(mobile),
         JSONKeys.bankAccountKey: isBlank(bankAccount),
       });
+      // print('error:${res.errorMessage!}');
     },
   );
 }

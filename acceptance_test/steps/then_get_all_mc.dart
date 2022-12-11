@@ -7,10 +7,10 @@ StepDefinitionGeneric thenGetAllCustomers() {
   return then1<String, FlutterWorld>(
     'user can get all records and get {string} records',
     (count, context) async {
-      final number = int.tryParse(count);
+      final c = int.tryParse(count);
       final rep = CustomerLocalRespositoryImpl();
       final cList = await GetAllCustomerUseCaseImpl(rep).getCustomersList();
-      context.expect(cList.result!.length, number);
+      context.expect(cList.result!.length, c);
     },
   );
 }

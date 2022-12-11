@@ -12,7 +12,9 @@ StepDefinitionGeneric thenMustbeCustomersMc() {
 
       final firstName = columns.elementAt(0)['FirstName'];
       final lastName = columns.elementAt(0)['LastName'];
-      final dateOfBirth = columns.elementAt(0)['DateOfBirth'];
+      final dateOfBirth = BirthDate.fromStringymmmd(
+              BirthDate.dateParser(columns.elementAt(0)['DateOfBirth'] ?? ''))
+          .birthDateString;
       final email = columns.elementAt(0)['Email'];
       final mobile = columns.elementAt(0)['PhoneNumber'];
       final bankAccount = columns.elementAt(0)['BankAccountNumber'];
@@ -24,7 +26,7 @@ StepDefinitionGeneric thenMustbeCustomersMc() {
           id: 1,
           firstName: firstName!,
           lastName: lastName!,
-          birthDate: dateOfBirth!,
+          birthDate: dateOfBirth,
         ),
         phone: mobile!,
       );

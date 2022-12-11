@@ -1,18 +1,11 @@
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 // ignore: depend_on_referenced_packages
 import 'package:gherkin/gherkin.dart';
-// import 'package:intl/intl.dart';
 import 'package:mc_crud/mc_crud.dart';
 
 String isBlank(String entry) {
   return entry == '[blank]' ? '' : entry;
 }
-
-// String convertToFormat(String date) {
-//   return DateFormat.yMMMMd().format(
-//     DateFormat.yMMMd().parse(date),
-//   );
-// }
 
 StepDefinitionGeneric whenCreate() {
   return when1<GherkinTable, FlutterWorld>(
@@ -28,7 +21,7 @@ StepDefinitionGeneric whenCreate() {
       final rep = CustomerLocalRespositoryImpl();
       final customers = await GetAllCustomerUseCaseImpl(rep).getCustomersList();
       final id = customers.result!.isEmpty ? 1 : customers.result!.length + 1;
-      final date = BirthDate.fromStringymmmd(isBlank(dateOfBirth));
+      final date = BirthDate.fromStringymmmd(BirthDate.dateParser(dateOfBirth));
       await CreateCustomerUsecaseImpl(rep).createCustomer({
         JSONKeys.idKey: id,
         JSONKeys.personKey: PersonDTO(

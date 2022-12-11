@@ -6,7 +6,7 @@ import 'package:mc_crud/mc_crud.dart';
 StepDefinitionGeneric thenCustomerCreated() {
   return then2<int, GherkinTable, FlutterWorld>(
     RegExp(
-        r'{int} customer with these details is created:|there is {int} customer with these details:|'),
+        r'{int} customer with these details is created:|there is {int} customer with these details:'),
     (count, dataTable, context) async {
       final columns = dataTable.asMap();
       final firstName = columns.elementAt(0)['firstName'];

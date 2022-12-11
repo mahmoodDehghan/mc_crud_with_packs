@@ -4,9 +4,9 @@ import 'package:gherkin/gherkin.dart';
 import 'package:mc_crud/mc_crud.dart';
 
 StepDefinitionGeneric whenDeleteUser() {
-  return when2<String, GherkinTable, FlutterWorld>(
+  return when1<String, FlutterWorld>(
     'user delete customer by Email of {string}',
-    (email, dataTable, context) async {
+    (email, context) async {
       final rep = CustomerLocalRespositoryImpl();
       final cList = await GetAllCustomerUseCaseImpl(rep).getCustomersList();
       final customers = cList.result!;

@@ -59,13 +59,14 @@ void main() {
         whenEditUser(),
         whenDeleteUser(),
         whenCreate(),
+
+        //others
         // pickRightDate(),
         // isPresent(),
         // pickSpecificDate(),
         // customerExist(),
         // showBirthDate(),
         // tapWidget(),
-        // // scrollTop(),
         // messageConfirm(),
       ],
       semanticsEnabled: false,
@@ -85,9 +86,9 @@ void main() {
         TestRunSummaryReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        // JsonReporter(
-        //   writeReport: (_, __) => Future<void>.value(),
-        // ),
+        JsonReporter(
+          writeReport: (_, __) => Future<void>.value(),
+        ),
       ],
     ),
     appMainFunction: (World world) async => app.main(),
